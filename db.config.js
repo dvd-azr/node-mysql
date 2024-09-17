@@ -7,5 +7,5 @@ module.exports = {
   PORT: 3306,
   DB: "node_mysql",
   USERNAME: "root",
-  PASSWORD: "",
+  PASSWORD: "root",
 };
