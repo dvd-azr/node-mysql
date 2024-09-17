@@ -23,5 +23,5 @@ RUN npm install --production
 # copy all files in the project
 COPY . .
 # please modify the port if you wish another PORT
-EXPOSE 5000
+EXPOSE 80/tcp
 CMD [ "npm", "start" ]
