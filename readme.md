@@ -1,0 +1,1 @@
+[Sumber](https://github.com/numerica-ideas/community/blob/master/docker/docker-compose-nodejs-mysql/.env.sample)
