@@ -6,7 +6,7 @@ const express = require("express");
 const Sequelize = require("sequelize");
 const dbConfig = require("./db.config");
 const app = express();
-const port = 3000;
+const port = 8080;
 
 // Database connection using Sequelize via the mysql2 driver
 const sequelize = new Sequelize(
