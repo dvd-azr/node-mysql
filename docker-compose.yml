@@ -77,24 +77,46 @@
 # networks:
 #   backend:
 
-# 
-mysql:
-    image: 'mysql/mysql-server:8.0'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-        - '3306:3306'
+      - 8080:8080
+      - 80:8080
+      - 8080:80
+      # - 80:3000
+    depends_on:
+      mysqldb:
+        condition: service_healthy
     environment:
-        MYSQL_ROOT_PASSWORD: 'root'
-        MYSQL_ROOT_HOST: "%"
-        MYSQL_DATABASE: 'app'
-        MYSQL_USER: 'root'
-        MYSQL_PASSWORD: ''
-        MYSQL_ALLOW_EMPTY_PASSWORD: 1
-    volumes:
-        - 'mysql-data:/var/lib/mysql'
-        # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+      # - DB_HOST=mysqldb
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_NAME=node_mysql
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
     networks:
-        - backend
-    healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-p root"]
-        retries: 3
-        timeout: 5s
+      - nodejs-mysql-network
+# 
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'root'
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_DATABASE: 'app'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'root'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - 'mysql-data:/var/lib/mysql'
+            # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+        networks:
+            - nodejs-mysql-network
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-p root"]
+            retries: 3
+            timeout: 5s
