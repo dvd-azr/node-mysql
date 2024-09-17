@@ -12,9 +12,9 @@ services:
     environment:
       - DB_HOST=mysqldb
       - DB_PORT=3306
-      - DB_NAME=${MYSQL_DATABASE}
+      - DB_NAME=node_mysql
       - DB_USERNAME=root
-      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_PASSWORD=
     networks:
       - nodejs-mysql-network
   mysqldb:
@@ -22,8 +22,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=node_mysql
+      - MYSQL_ROOT_PASSWORD=
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
