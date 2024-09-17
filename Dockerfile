@@ -10,7 +10,7 @@ COPY . .
 # COPY .env.example .env
 
 # Expose the application port
-EXPOSE 8080/tcp
+EXPOSE 8080
 
 # Run the App
 CMD npm start

@@ -20,6 +20,7 @@ services:
       - DB_PASSWORD=
     networks:
       - nodejs-mysql-network
+      
   mysqldb:
     image: mysql:8.0.33
     ports:
