@@ -24,7 +24,7 @@ WORKDIR /app
 ARG PORT_ARG="parse dari Dckkerfile"
 ENV DB_NAME=$PORT_ARG
 
-ENV DB_HOST=host.docker.internal
+ENV DB_HOST='$(host.docker.internal)'
 
 # copy all files in the project
 COPY . .
