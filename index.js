@@ -68,6 +68,13 @@ app.get("/users", (req, res) => {
     });
 });
 
+app.get("/status", (req, res) => {
+  res.json({
+    status: "ok",
+    code: 200,
+  });
+});
+
 app.listen(port, () => {
   console.log(`Docker-Compose-NodeJS-MySQL App listening on port ${port}.`);
 });
