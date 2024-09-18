@@ -3,44 +3,12 @@
  * https://numericaideas.com/blog/docker-compose-nodejs-mysql
  */
 const express = require("express");
-const Sequelize = require("sequelize");
-const dbConfig = require("./db.config");
 const app = express();
 const port = 80;
 
+import { connectDatabase } from "./configs/database";
 console.log("console : ", process.env.DB_NAME);
 console.log("console HOST : ", process.env.DB_HOST);
-
-// Database connection using Sequelize via the mysql2 driver
-const sequelize = new Sequelize(
-  dbConfig.DB,
-  dbConfig.USERNAME,
-  dbConfig.PASSWORD,
-  {
-    dialect: dbConfig.DIALECT,
-    host: dbConfig.HOST,
-    port: dbConfig.PORT,
-    logging: false,
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
-    },
-  }
-);
-
-async function connectDatabase() {
-  await sequelize.sync().then(
-    function () {
-      console.log("DB connection sucessful.");
-    },
-    function (err) {
-      // catch error here
-      console.log(err);
-    }
-  );
-}
 
 // // Let's define a basic User model
 // const User = sequelize.define("User", {
