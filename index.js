@@ -30,15 +30,15 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize.sync({}).then(
-  function () {
-    console.log("DB connection sucessful.");
-  },
-  function (err) {
-    // catch error here
-    console.log(err);
-  }
-);
+// sequelize.sync({}).then(
+//   function () {
+//     console.log("DB connection sucessful.");
+//   },
+//   function (err) {
+//     // catch error here
+//     console.log(err);
+//   }
+// );
 
 // // Let's define a basic User model
 // const User = sequelize.define("User", {
