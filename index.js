@@ -8,6 +8,8 @@ const dbConfig = require("./db.config");
 const app = express();
 const port = 80;
 
+console.log(process.env);
+
 // Database connection using Sequelize via the mysql2 driver
 const sequelize = new Sequelize(
   dbConfig.DB,
@@ -20,11 +22,15 @@ const sequelize = new Sequelize(
   }
 );
 
-// try {
-//   await sequelize.authenticate();
-// } catch (err) {
-//   console.error("Unable to connect to the database:", err);
-// }
+sequelize.sync().then(
+  function () {
+    console.log("DB connection sucessful.");
+  },
+  function (err) {
+    // catch error here
+    console.log(err);
+  }
+);
 
 // Let's define a basic User model
 const User = sequelize.define("User", {
