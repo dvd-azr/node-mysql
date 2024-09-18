@@ -18,12 +18,6 @@ const sequelize = new Sequelize(DB, USERNAME, PASSWORD, {
   host: HOST,
   port: PORT,
   logging: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
 });
 
 async function connectDatabase() {
