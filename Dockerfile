@@ -21,7 +21,8 @@ FROM node:20
 WORKDIR /app
 # copy only package.json & package-lock.json to install the production dependencies
 # COPY package*.json .
-
+ARG PORT_ARG="parse dari Dckkerfile"
+ENV DB_NAME=$PORT_ARG
 
 # copy all files in the project
 COPY . .
