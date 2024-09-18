@@ -126,6 +126,17 @@ services:
       retries: 3
       timeout: 5s
 
+  grafana:
+    image: grafana/grafana
+    environment:
+      GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_AUTH_DISABLE_SIGNOUT_MENU: "true"
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+    ports:
+      - "9100:3000"
+
 networks:
   nodejs-mysql:
     name: nodejs-mysql
