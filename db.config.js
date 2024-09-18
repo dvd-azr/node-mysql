@@ -2,7 +2,7 @@
  * Database configuration.
  */
 
-export default dbConfig = {
+const dbConfig = {
   DIALECT: "mysql",
   // HOST: "127.0.0.1",
   HOST: "10.0.2.2",
@@ -20,3 +20,5 @@ export default dbConfig = {
 //   USERNAME: "root",
 //   PASSWORD: "root",
 // };
+
+export default dbConfig;
