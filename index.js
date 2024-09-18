@@ -38,6 +38,14 @@ const User = sequelize.define("User", {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
 });
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((error) => {
+    console.error("Unable to connect to the database: ", error);
+  });
 
 // Match the DB state with the actual model definition on the top: https://sequelize.org/docs/v6/core-concepts/model-basics/#model-synchronization
 User.sync({ alter: true });
