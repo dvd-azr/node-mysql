@@ -18,6 +18,9 @@ const sequelize = new Sequelize(DB, USERNAME, PASSWORD, {
   host: HOST,
   port: PORT,
   logging: false,
+  dialectOptions: {
+    connectTimeout: 60000,
+  },
 });
 
 async function connectDatabase() {
