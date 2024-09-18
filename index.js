@@ -9,6 +9,7 @@ const app = express();
 const port = 80;
 
 console.log("console : ", process.env.DB_NAME);
+console.log("console HOST : ", process.env.DB_HOST);
 
 // Database connection using Sequelize via the mysql2 driver
 // const sequelize = new Sequelize(
