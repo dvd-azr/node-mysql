@@ -30,7 +30,7 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize.sync().then(
+sequelize.sync({}).then(
   function () {
     console.log("DB connection sucessful.");
   },
