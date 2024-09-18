@@ -12,26 +12,26 @@ console.log("console : ", process.env.DB_NAME);
 console.log("console HOST : ", process.env.DB_HOST);
 
 // Database connection using Sequelize via the mysql2 driver
-// const sequelize = new Sequelize(
-//   dbConfig.DB,
-//   dbConfig.USERNAME,
-//   dbConfig.PASSWORD,
-//   {
-//     dialect: dbConfig.DIALECT,
-//     host: dbConfig.HOST,
-//     port: dbConfig.PORT,
-//   }
-// );
+const sequelize = new Sequelize(
+  dbConfig.DB,
+  dbConfig.USERNAME,
+  dbConfig.PASSWORD,
+  {
+    dialect: dbConfig.DIALECT,
+    host: dbConfig.HOST,
+    port: dbConfig.PORT,
+  }
+);
 
-// sequelize.sync().then(
-//   function () {
-//     console.log("DB connection sucessful.");
-//   },
-//   function (err) {
-//     // catch error here
-//     console.log(err);
-//   }
-// );
+sequelize.sync().then(
+  function () {
+    console.log("DB connection sucessful.");
+  },
+  function (err) {
+    // catch error here
+    console.log(err);
+  }
+);
 
 // // Let's define a basic User model
 // const User = sequelize.define("User", {

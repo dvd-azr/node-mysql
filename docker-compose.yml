@@ -102,29 +102,29 @@ services:
 
     networks:
       - nodejs-mysql
-
     #
-    mysql:
-      image: 'mysql/mysql-server:8.0'
-      ports:
-        - '3306:3306'
-      environment:
-        MYSQL_ROOT_PASSWORD: 'root'
-        MYSQL_ROOT_HOST: "%"
-        MYSQL_DATABASE: 'app'
-        MYSQL_USER: 'root'
-        MYSQL_PASSWORD: 'root'
-        MYSQL_ALLOW_EMPTY_PASSWORD: 1,
 
-      volumes:
-        - 'mysql-data:/var/lib/mysql'
-        # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-      networks:
-        - nodejs-mysql
-      healthcheck:
-        test: [ "CMD", "mysqladmin", "ping", "-p root" ]
-        retries: 3
-        timeout: 5s
+  mysql:
+    image: 'mysql/mysql-server:8.0'
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: 'app'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1,
+
+    volumes:
+      # - 'mysql-data:/var/lib/mysql'
+      # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+    networks:
+      - nodejs-mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-p root" ]
+      retries: 3
+      timeout: 5s
 
 networks:
   nodejs-mysql:
