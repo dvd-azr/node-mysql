@@ -20,7 +20,7 @@
 #       - DB_USERNAME=root
 #       - DB_PASSWORD=root
 #     networks:
-#       - nodejs-mysql-network
+#       - nodejs-mysql
 
 #   mysqldb:
 #     image: mysql:8.0.33
@@ -32,7 +32,7 @@
 #     volumes:
 #       - mysql-data:/var/lib/mysql
 #     networks:
-#       - nodejs-mysql-network
+#       - nodejs-mysql
 #     healthcheck:
 #       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
 #       retries: 10
@@ -41,8 +41,8 @@
 # volumes:
 #   mysql-data:
 # networks:
-#   nodejs-mysql-network:
-#     name: nodejs-mysql-network
+#   nodejs-mysql:
+#     name: nodejs-mysql
 
 # from : https://github.com/bervProject/node-back4app-example/blob/main/docker-compose.yml
 # docker-compose for local development only
@@ -78,7 +78,7 @@
 #   backend:
 
 services:
-  app:
+  nodejs-mysql:
     build:
       context: .
       dockerfile: Dockerfile
@@ -99,8 +99,8 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=root
     networks:
-      - nodejs-mysql-network
-      
+      - nodejs-mysql
+
     # 
     mysql:
         image: 'mysql/mysql-server:8.0'
@@ -117,8 +117,13 @@ services:
             - 'mysql-data:/var/lib/mysql'
             # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
-            - nodejs-mysql-network
+            - nodejs-mysql
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p root"]
             retries: 3
             timeout: 5s
+
+networks:
+    nodejs-mysql:
+        name: nodejs-mysql
+        driver: bridge
