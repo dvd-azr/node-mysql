@@ -8,7 +8,7 @@ const dbConfig = require("./db.config");
 const app = express();
 const port = 80;
 
-console.log(process.env.DB_NAME);
+console.log("console : ", process.env);
 
 // Database connection using Sequelize via the mysql2 driver
 const sequelize = new Sequelize(
@@ -38,14 +38,15 @@ const User = sequelize.define("User", {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
 });
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((error) => {
-    console.error("Unable to connect to the database: ", error);
-  });
+
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("Connection has been established successfully.");
+//   })
+//   .catch((error) => {
+//     console.error("Unable to connect to the database: ", error);
+//   });
 
 // Match the DB state with the actual model definition on the top: https://sequelize.org/docs/v6/core-concepts/model-basics/#model-synchronization
 User.sync({ alter: true });
