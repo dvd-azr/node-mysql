@@ -20,11 +20,11 @@ const sequelize = new Sequelize(
   }
 );
 
-try {
-  await sequelize.authenticate();
-} catch (err) {
-  console.error("Unable to connect to the database:", err);
-}
+// try {
+//   await sequelize.authenticate();
+// } catch (err) {
+//   console.error("Unable to connect to the database:", err);
+// }
 
 // Let's define a basic User model
 const User = sequelize.define("User", {
