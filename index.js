@@ -20,6 +20,13 @@ const sequelize = new Sequelize(
     dialect: dbConfig.DIALECT,
     host: dbConfig.HOST,
     port: dbConfig.PORT,
+    logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
   }
 );
 
