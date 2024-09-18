@@ -2,7 +2,8 @@
  * Basic NodeJS project to illustrate how to run a "NodeJS + MySQL" project using Docker Compose.
  * https://numericaideas.com/blog/docker-compose-nodejs-mysql
  */
-const express = require("express");
+import express from "express";
+// const express = require("express");
 const app = express();
 const port = 80;
 
