@@ -53,7 +53,6 @@ sequelize.sync().then(
 // User.sync({ alter: true });
 
 // // Express default body parser
-// app.use(express.json());
 
 // // Create a new User
 // app.post("/users", (req, res) => {
@@ -77,6 +76,8 @@ sequelize.sync().then(
 //       res.status(500).json(err);
 //     });
 // });
+
+app.use(express.json());
 
 app.get("/status", (req, res) => {
   res.json({
