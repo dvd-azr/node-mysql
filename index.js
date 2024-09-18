@@ -7,7 +7,7 @@ import express from "express";
 const app = express();
 const port = 80;
 
-import { connectDatabase } from "./configs/database";
+import { connectDatabase } from "./configs/database.js";
 console.log("console : ", process.env.DB_NAME);
 console.log("console HOST : ", process.env.DB_HOST);
 
