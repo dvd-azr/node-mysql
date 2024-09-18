@@ -8,7 +8,7 @@ const dbConfig = require("./db.config");
 const app = express();
 const port = 80;
 
-console.log("console : ", process.env);
+console.log("console : ", process.env.DB_NAME);
 
 // Database connection using Sequelize via the mysql2 driver
 const sequelize = new Sequelize(
