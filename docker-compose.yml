@@ -82,13 +82,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
     ports:
-      - 8080:8080
-      - 80:8080
-      - 8080:80
-      # - 80:3000
+      - 80:80
+      # - 8080:80
+      # - 80:8080
+      # - 8080:8080
     depends_on:
-      mysqldb:
+      mysql:
         condition: service_healthy
     environment:
       # - DB_HOST=mysqldb
@@ -99,7 +100,8 @@ services:
       - DB_PASSWORD=root
     networks:
       - nodejs-mysql-network
-# 
+      
+    # 
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
