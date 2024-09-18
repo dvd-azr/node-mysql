@@ -98,6 +98,8 @@ services:
       - DB_NAME=node_mysql
       - DB_USERNAME=root
       - DB_PASSWORD=root
+      - DB_NAME=parse_DB_NAME_fom_dockerCompose
+      
     networks:
       - nodejs-mysql
 
