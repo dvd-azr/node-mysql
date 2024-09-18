@@ -27,6 +27,7 @@ async function connectDatabase() {
       connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB}\`;`);
     }
   });
+
   await sequelize.sync().then(
     function () {
       console.log("DB connection sucessful.");
@@ -36,9 +37,9 @@ async function connectDatabase() {
       console.log(err);
     }
   );
-  await sequelize.sync({ force: false, alter: false }).then(() => {
-    console.log("Re-Sync Database");
-  });
+  //   await sequelize.sync({ force: false, alter: false }).then(() => {
+  //     console.log("Re-Sync Database");
+  //   });
 }
 
 export { connectDatabase, connection, sequelize };
