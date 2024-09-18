@@ -1,4 +1,5 @@
-const Sequelize = require("sequelize");
+// const Sequelize = require("sequelize");
+import Sequelize from "sequelize";
 // const dbConfig = require("./db.config");
 import dbConfig from "../db.config";
 // Database connection using Sequelize via the mysql2 driver
