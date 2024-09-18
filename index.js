@@ -30,15 +30,17 @@ const sequelize = new Sequelize(
   }
 );
 
-// sequelize.sync({}).then(
-//   function () {
-//     console.log("DB connection sucessful.");
-//   },
-//   function (err) {
-//     // catch error here
-//     console.log(err);
-//   }
-// );
+async function connectDatabase() {
+  await sequelize.sync().then(
+    function () {
+      console.log("DB connection sucessful.");
+    },
+    function (err) {
+      // catch error here
+      console.log(err);
+    }
+  );
+}
 
 // // Let's define a basic User model
 // const User = sequelize.define("User", {
@@ -93,6 +95,7 @@ app.get("/status", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`Docker-Compose-NodeJS-MySQL App listening on port ${port}.`);
+  await connectDatabase();
 });
